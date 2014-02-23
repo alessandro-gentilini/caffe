@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Caffe</string>
-    <string name="edit_message">Valore ricarica</string>
+    <string name="edit_message">Inserisci importo ricarica in cents</string>
     <string name="button_send">Ricarica</string>
     <string name="button_consume">Consuma</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="menu_settings">Settings</string>
-        <string name="credito_residuo">42</string>
+        <string name="credit">42</string>
 </resources>

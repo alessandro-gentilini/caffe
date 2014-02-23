@@ -6,10 +6,10 @@
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/textView_credito_residuo"
+        android:id="@+id/textView_credit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/credito_residuo"
+        android:text="@string/credit"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
@@ -25,7 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
-        android:hint="@string/edit_message" >
+        android:hint="@string/edit_message"
+        android:inputType="number" >
 
         <requestFocus />
     </EditText>

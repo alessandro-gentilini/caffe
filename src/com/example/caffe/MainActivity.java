@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
 
 		SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
     	Integer credit = sharedPref.getInt("credit", 0);
-		TextView tv = (TextView) findViewById(R.id.textView_credito_residuo);
+		TextView tv = (TextView) findViewById(R.id.textView_credit);
 		tv.setText(credit.toString());		
 	}
 
@@ -35,12 +35,12 @@ public class MainActivity extends Activity {
 	protected void onStop(){
 		super.onStop();
 
-		TextView tv = (TextView) findViewById(R.id.textView_credito_residuo);
-		Integer current = Integer.parseInt(tv.getText().toString());       
+		TextView tv = (TextView) findViewById(R.id.textView_credit);
+		Integer credit = Integer.parseInt(tv.getText().toString());       
 
 		SharedPreferences settings = getPreferences(Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = settings.edit();
-		editor.putInt("credit", current);
+		editor.putInt("credit", credit);
 		editor.commit();
 	}	
 
@@ -50,14 +50,14 @@ public class MainActivity extends Activity {
 	    Integer charge;
 		try {
 			charge = Integer.parseInt(editText.getText().toString());
-		    TextView tv = (TextView) findViewById(R.id.textView_credito_residuo);
-			Integer current = Integer.parseInt(tv.getText().toString());
-			Integer future = current+charge;
-			tv.setText(future.toString());		
+		    TextView tv = (TextView) findViewById(R.id.textView_credit);
+			Integer current_credit = Integer.parseInt(tv.getText().toString());
+			Integer credit = current_credit+charge;
+			tv.setText(credit.toString());		
 			
 			SharedPreferences settings = getPreferences(Context.MODE_PRIVATE);
 			SharedPreferences.Editor editor = settings.edit();
-			editor.putInt("credit", future);
+			editor.putInt("credit", credit);
 			editor.commit();			
 		} catch (NumberFormatException e) {
 			Context context = getApplicationContext();
@@ -70,11 +70,16 @@ public class MainActivity extends Activity {
 	}
 
 	public void consume(View view) {
-		TextView tv = (TextView) findViewById(R.id.textView_credito_residuo);
+		TextView tv = (TextView) findViewById(R.id.textView_credit);
 
-		Integer number = Integer.parseInt(tv.getText().toString());
-		number = number - 30;
-		tv.setText(number.toString());
+		Integer credit = Integer.parseInt(tv.getText().toString());
+		credit = credit - 26;
+		tv.setText(credit.toString());
+		
+		SharedPreferences settings = getPreferences(Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putInt("credit", credit);
+		editor.commit();			
 	}
 	
 	
