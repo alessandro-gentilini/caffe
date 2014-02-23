@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,6 +30,20 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
+	
+	@Override
+	protected void onStop(){
+		super.onStop();
+
+		TextView tv = (TextView) findViewById(R.id.textView_credito_residuo);
+		Integer current = Integer.parseInt(tv.getText().toString());       
+
+		SharedPreferences settings = getPreferences(Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putInt("credit", current);
+		editor.commit();
+	}	
+
 
 	public void recharge(View view) {
 		EditText editText = (EditText) findViewById(R.id.edit_charge_amount);
@@ -40,7 +53,12 @@ public class MainActivity extends Activity {
 		    TextView tv = (TextView) findViewById(R.id.textView_credito_residuo);
 			Integer current = Integer.parseInt(tv.getText().toString());
 			Integer future = current+charge;
-			tv.setText(future.toString());			
+			tv.setText(future.toString());		
+			
+			SharedPreferences settings = getPreferences(Context.MODE_PRIVATE);
+			SharedPreferences.Editor editor = settings.edit();
+			editor.putInt("credit", future);
+			editor.commit();			
 		} catch (NumberFormatException e) {
 			Context context = getApplicationContext();
 			CharSequence text = "Errore nel formato dei dati";
@@ -57,6 +75,8 @@ public class MainActivity extends Activity {
 		Integer number = Integer.parseInt(tv.getText().toString());
 		number = number - 30;
 		tv.setText(number.toString());
-	}	
+	}
+	
+	
 
 }
