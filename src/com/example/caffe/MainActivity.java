@@ -32,7 +32,6 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-	/** Called when the user clicks the Send button */
 	public void recharge(View view) {
 		EditText editText = (EditText) findViewById(R.id.edit_charge_amount);
 	    Integer charge;
@@ -50,33 +49,14 @@ public class MainActivity extends Activity {
 			toast.show();
 		}
 		editText.setText("");
-
-
-		
 	}
-	/*
-    NumberFormat nf = NumberFormat.getInstance(Locale.GERMAN);
-    Number number = nf.parse(preis);
-    return new BigDecimal(number.doubleValue());
-	 */
 
-	/** Called when the user clicks the Send button */
 	public void consume(View view) {
 		TextView tv = (TextView) findViewById(R.id.textView_credito_residuo);
 
 		Integer number = Integer.parseInt(tv.getText().toString());
 		number = number - 30;
 		tv.setText(number.toString());
-
-		/*
-		 * Number number = nf.parse((String) tv.getText());
-				BigDecimal bd = new BigDecimal(number.doubleValue());
-				BigDecimal one_coffe = new BigDecimal("0.3");
-				BigDecimal nc = bd.subtract(one_coffe);
-				BigDecimal nc1 = nc.round(new MathContext(4));
-				BigDecimal ts = nc1.setScale(2);
-				tv.setText(ts.toString());		
-		 */
 	}	
 
 }
